@@ -90,7 +90,9 @@ section h2 {
 	header nav {
 		max-height: 200px;
 		display: visible;
-		width: 33.3%;
+	}
+	header nav a {
+		padding: 0 0.5rem;
 	}
 
 	header, .menu {
