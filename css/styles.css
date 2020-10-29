@@ -49,6 +49,13 @@ ul.menu li {
 
 
 header nav {
+	/* style for how it looks overlapping main content */
+	position: absolute;
+	/* Absolute position removes it from document flow. No background color, because
+	it doesn't belong to the header. */
+	background-color: #fafafa;
+	width: 100vw;
+	left: 0;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.7s ease-in-out;
@@ -57,7 +64,8 @@ header nav {
 /* Step 3: Create a special class to show the menu. This class name exists only in CSS for now. */
 /* Next, the JavaScript will add this class to the nav for us. */
 .show-nav {
-	max-height: 200px;
+	max-height: 300px;
+	padding: 1rem 0;
 }
 
 /********** section **********/
@@ -80,6 +88,35 @@ section h2 {
 	font-size: 3.157rem;
 }
 
+.gallery {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+}
+
+.thumbnail {
+	margin: 0 0.5rem;
+	position: relative;
+}
+
+.thumbnail img {
+	margin-bottom: 1rem;
+	border-radius: 5px;
+}
+
+span {
+	background-color: #87a6ab;
+	color: #fafafa;
+	font-weight: bold;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	/* position span over image */
+	/* Absolute position of top/right/left/bottom is relative to screen UNLESS parent container is
+	   relative positioned.*/
+	position: absolute;
+	top: -10px;
+	right: -7px;
+}
 /* Step 4: Add media query and show nav by default (hide toggle) and style as horizontal menu. */
 
 @media only screen and (min-width: 37.5rem) {
@@ -88,9 +125,12 @@ section h2 {
 	}
 
 	header nav {
+		position: static;
+		width: auto;
 		max-height: 200px;
 		display: visible;
 	}
+
 	header nav a {
 		padding: 0 0.5rem;
 	}
@@ -98,13 +138,5 @@ section h2 {
 	header, .menu {
 		display: flex;
 		justify-content: space-between;
-	}
-
-	.menu {
-		justify-content: space-around;
-	}
-
-	ul li {
-		flex-grow: 1;
 	}
 }
